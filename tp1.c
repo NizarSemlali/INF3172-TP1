@@ -14,7 +14,7 @@ int main ( int argc, char *argv[]) {
     if (fichier != NULL) {
 
     	printf("Le fichier existe !\n");
-
+        printf("Pas d'erreur ! \n") ; 
     } else {
 
         fprintf(stderr, "%s\n", strerror(errno));
