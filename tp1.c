@@ -13,7 +13,7 @@ int main ( int argc, char *argv[]) {
 
     if (fichier != NULL) {
 
-    	printf("fichier existe !\n");
+    	printf("Le fichier existe !\n");
 
     } else {
 
