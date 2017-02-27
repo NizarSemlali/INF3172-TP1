@@ -11,6 +11,6 @@ Struct inode {
 	int bloc7; 
 	int bloc8; 
 	
-	int* simple;
+	int indirectionSimple[8];
 
 }
