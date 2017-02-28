@@ -6,9 +6,11 @@ Ce programme est une simulation d'un système de fichiers d'un système d'exploi
   
 Ce travail pratique est réalisé dans le cadre du cours Principes des systèmes d'exploitation ( INF3172 ), Hiver 2017 À L'université du Québec À Montréal .  
 
-## Auteur
+## Auteurs
 
 Nizar Semlali 
+  
+Othmane Bouaddi
 
 ## Fonctionnement
 
