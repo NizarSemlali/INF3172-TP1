@@ -42,64 +42,59 @@ int main ( int argc, char *argv[]) {
          fprintf(stderr, "%s\n", strerror(errno));
 
     } else {
-
-        char c ; 
-        char instruction[100];
-        int i = 0 ; 
-        char *token;
-
         
-        do{    
-            c = fgetc(instructions);  
-            if( feof(instructions) )
-            {
-                break ;
-            }
-            instruction[i] = c ; 
-            i++;
-        } while ( c != '\n');
+        char line [ 320 ]; // Taille maximale qu'une ligne pourrait prendre 
+ 
+      while ( fgets ( line, sizeof line, instructions ) != NULL ) // Lecture de chaque ligne
+         int compteur = 1 ; 
+         char *token;   
+         char *newLine = strchr(line ,'\n'); // Suppression du retour chariot 
+         if (newLine) *newLine = 0;
+         token = strtok(line," ");
 
-        token = strtok(instruction," ");
+         if ( strcmp(token,"creation_repertoire") == 0 ) {
 
+                printf("Instruction : création répertoire \n") ; 
 
+        } else if (strcmp(token,"suppression_repertoire") == 0) {
 
-        while (token != NULL)
-        {
-            printf( "%s \n" , token);
-            token = strtok(NULL, " ");
+                printf("Instruction : Suppression répertoire  \n") ; 
+
+        } else if (strcmp(token,"creation_fichier") == 0) {
+
+                printf("Instruction : Création fichier  \n") ; 
+
+        } else if (strcmp(token,"suppression_fichier") == 0) {
+
+                printf("Instruction : Suppression fichier  \n") ; 
+
+        } else if (strcmp(token,"lire_fichier") == 0) {
+
+                printf("Instruction : Lire fichier \n") ; 
+
         }
 
+         while( token != NULL ) {
+         
+            token = strtok(NULL, " ");
 
-        /* while ( strcmp(fgetc(nom,40,instructions)," ") != 0 ) {
-    
-            if ( strcmp(nom,"creation_repertoire") == 0 ) {
+            if ( token != NULL ) {
 
-                printf("creation repertoire \n") ; 
-
-            } else if (strcmp(nom,"suppression_repertoire") == 0) {
-
-                printf("suppression repertoire  \n") ; 
-
-            } else if (strcmp(nom,"creation_fichier") == 0) {
-
-                printf("creation fichier  \n") ; 
-
-            } else if (strcmp(nom,"suppression_fichier") == 0) {
-
-                printf("suppression fichier  \n") ; 
-
-            } else if (strcmp(nom,"lire_fichier") == 0) {
-
-                printf("lire fichier  \n") ; 
+                printf( "Paramètre %d : %s\n", compteur , token );
+                compteur++ ; 
 
             }
+            
+         }
 
-        } */
+      }
+
+      fclose(disque);
+      fclose(instructions);
+
+
 
      }
-
-    fclose(disque);
-    fclose(instructions);
 
 
     return 0 ; 

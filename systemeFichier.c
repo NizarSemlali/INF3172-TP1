@@ -1,9 +1,7 @@
-#include<stdio.h>
+#include <stdio.h>
 
 
-Struct bloc {
+struct bloc {
 	short nuBloc;
 	char caractere[126];
-}
-
-
+} ; 
