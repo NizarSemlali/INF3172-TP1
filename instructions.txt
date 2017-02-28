@@ -1,7 +1,2 @@
-creation_repertoire /users
+creation_fichier /users
 creation_repertoire /users/jacques
-suppression_repertoire /etc/sub
-creation_fichier /users/jacques/main.c Ceci est le contenu du fichier.
-creation_fichier /users/jacques/makefile M
-suppression_fichier /users/jacques/fichier
-lire_fichier /users/jacques/makefile M

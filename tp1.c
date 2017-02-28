@@ -1,15 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
-#include <errno.h>
-
-typedef struct {
-
-    char chaine[16];
-
-} bloc ;
-
+#include "tp1.h"
 
 
 int main ( int argc, char *argv[]) {
@@ -39,65 +28,99 @@ int main ( int argc, char *argv[]) {
 
     if (instructions == NULL) {
 
-         fprintf(stderr, "%s\n", strerror(errno));
+        fprintf(stderr, "%s\n", strerror(errno));
 
     } else {
-        
+                
         char line [ 320 ]; // Taille maximale qu'une ligne pourrait prendre 
  
-      while ( fgets ( line, sizeof line, instructions ) != NULL ) // Lecture de chaque ligne
-         int compteur = 1 ; 
-         char *token;   
-         char *newLine = strchr(line ,'\n'); // Suppression du retour chariot 
-         if (newLine) *newLine = 0;
-         token = strtok(line," ");
+        while ( fgets ( line, sizeof line, instructions ) != NULL ) { // Lecture de chaque ligne
+            
+            int compteur = 1 ;
+            char *token; 
+            char *newLine = strchr(line ,'\n'); // Suppression du retour chariot 
+            if (newLine) *newLine = 0;
+            token = strtok(line," ");
 
-         if ( strcmp(token,"creation_repertoire") == 0 ) {
+            if (strcmp(token,"creation_repertoire") == 0 ) {
 
                 printf("Instruction : création répertoire \n") ; 
 
-        } else if (strcmp(token,"suppression_repertoire") == 0) {
+            } else if (strcmp(token,"suppression_repertoire") == 0) {
 
                 printf("Instruction : Suppression répertoire  \n") ; 
 
-        } else if (strcmp(token,"creation_fichier") == 0) {
+            } else if (strcmp(token,"creation_fichier") == 0) {
 
                 printf("Instruction : Création fichier  \n") ; 
 
-        } else if (strcmp(token,"suppression_fichier") == 0) {
+            } else if (strcmp(token,"suppression_fichier") == 0) {
 
                 printf("Instruction : Suppression fichier  \n") ; 
 
-        } else if (strcmp(token,"lire_fichier") == 0) {
+            } else if (strcmp(token,"lire_fichier") == 0) {
 
                 printf("Instruction : Lire fichier \n") ; 
 
-        }
-
-         while( token != NULL ) {
-         
-            token = strtok(NULL, " ");
-
-            if ( token != NULL ) {
-
-                printf( "Paramètre %d : %s\n", compteur , token );
-                compteur++ ; 
-
             }
-            
-         }
 
-      }
+            while( token != NULL ) {
+         
+                token = strtok(NULL, " ");
+
+                if ( token != NULL ) {
+
+                    printf( "Paramètre %d : %s\n", compteur , token );
+                    compteur++ ; 
+
+                }
+            
+            }
+
+        }
 
       fclose(disque);
       fclose(instructions);
 
 
 
-     }
+    }
 
 
     return 0 ; 
 
 
 }
+
+
+void creation_repertoire(char* chemin){
+
+printf("Créer répertoire") ; 
+
+}
+
+void suppression_repertoire(char* chemin){
+
+    printf("Supprimer répertoire") ; 
+}
+
+void creation_fichier(char* chemin, char* contenu){
+
+    printf("Créer fichier") ; 
+}
+
+void suppression_fichier(char* chemin) {
+
+    printf("Supprimer fichier") ; 
+}
+
+void lire_fichier(char* chemin){
+
+    printf("Lire fichier") ; 
+}
+
+
+
+
+
+
