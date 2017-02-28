@@ -1,4 +1,9 @@
-#include "tp1.h"
+nclude "tp1.h"
+#define MKDIR "creation_repertoire"
+#define RMDIR "suppression_repertoire"
+#define MKFILE "creation_fichier"
+#define RMFILE "suppression_fichier"
+#define READFILE "lire_fichier"
 
 
 int main ( int argc, char *argv[]) {
@@ -36,49 +41,68 @@ int main ( int argc, char *argv[]) {
  
         while ( fgets ( line, sizeof line, instructions ) != NULL ) { // Lecture de chaque ligne
             
+            char* commande = (char *)malloc(22) ; 
+            char* chemin = (char *)malloc(40); 
             int compteur = 1 ;
             char *token; 
             char *newLine = strchr(line ,'\n'); // Suppression du retour chariot 
             if (newLine) *newLine = 0;
-            token = strtok(line," ");
-
-            if (strcmp(token,"creation_repertoire") == 0 ) {
-
-                printf("Instruction : création répertoire \n") ; 
-
-            } else if (strcmp(token,"suppression_repertoire") == 0) {
-
-                printf("Instruction : Suppression répertoire  \n") ; 
-
-            } else if (strcmp(token,"creation_fichier") == 0) {
-
-                printf("Instruction : Création fichier  \n") ; 
-
-            } else if (strcmp(token,"suppression_fichier") == 0) {
-
-                printf("Instruction : Suppression fichier  \n") ; 
-
-            } else if (strcmp(token,"lire_fichier") == 0) {
-
-                printf("Instruction : Lire fichier \n") ; 
-
-            }
-
-            while( token != NULL ) {
-         
-                token = strtok(NULL, " ");
-
-                if ( token != NULL ) {
-
-                    printf( "Paramètre %d : %s\n", compteur , token );
-                    compteur++ ; 
-
-                }
             
-            }
+            token = strtok(line," ");
+            strcpy(commande,token);
+
+
+            token = strtok(NULL, " ");
+            strcpy(chemin,token); 
+
+
+
+
+
+            if (strcmp(commande,MKDIR) == 0 ) {
+
+                creation_repertoire(chemin);
+
+            } else if (strcmp(commande,RMDIR) == 0) {
+
+                suppression_repertoire(chemin);
+
+
+            } else if (strcmp(commande,MKFILE) == 0) {
+
+                char* contenu = (char *)malloc(256);
+
+                while( token != NULL ) {
+         
+                    token = strtok(NULL, " ");
+                    printf("Token : %s \n", token);
+                    strcat(contenu,token);
+            
+                }
+
+                //printf("Contenu : %s \n", contenu);
+
+                creation_fichier(chemin,contenu);
+
+                free(contenu);
+
+
+            } else if (strcmp(commande,RMFILE) == 0) {
+
+                suppression_fichier(chemin);
+
+            } else if (strcmp(commande,READFILE) == 0) {
+
+                lire_fichier(chemin);
+
+            } 
+            
+            free(commande);
+            free(chemin);
 
         }
 
+      
       fclose(disque);
       fclose(instructions);
 
@@ -95,32 +119,26 @@ int main ( int argc, char *argv[]) {
 
 void creation_repertoire(char* chemin){
 
-printf("Créer répertoire") ; 
+printf("Créer répertoire \n") ; 
 
 }
 
 void suppression_repertoire(char* chemin){
 
-    printf("Supprimer répertoire") ; 
+    printf("Supprimer répertoire \n") ; 
 }
 
 void creation_fichier(char* chemin, char* contenu){
 
-    printf("Créer fichier") ; 
+    printf("Créer fichier \n") ; 
 }
 
 void suppression_fichier(char* chemin) {
 
-    printf("Supprimer fichier") ; 
+    printf("Supprimer fichier \n") ; 
 }
 
 void lire_fichier(char* chemin){
 
-    printf("Lire fichier") ; 
+    printf("Lire fichier \n") ; 
 }
-
-
-
-
-
-
