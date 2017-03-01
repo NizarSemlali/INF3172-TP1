@@ -59,6 +59,7 @@ void creation_fichier(char* chemin, char* contenu) ;
 */ 
 void suppression_fichier(char* chemin) ;
 
+
 /*
  * Affiche le contenu du fichier à l'écran.
  * Gère les erreurs suivantes :
@@ -67,3 +68,10 @@ void suppression_fichier(char* chemin) ;
  * @param *chemin : Chemin du fichier à afficher.
 */ 
 void lire_fichier(char* chemin) ;
+
+/*
+ * Récupère le nom du fichier à créer. à lire ou à supprimer.
+ *
+ * @param *chemin : Chemin du fichier.
+*/ 
+char* nom_de_fichier(char*chemin);
