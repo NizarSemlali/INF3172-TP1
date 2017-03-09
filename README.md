@@ -49,9 +49,11 @@ Les commandes supportées sont :
   
 ## Contenu du projet
 
-* Fichier tp1.c contenant le code source du projet, avec la fonction main 
+* Fichier tp1.c contenant le code source du projet, avec la fonction main
+* Fichier tp1.h contenant l'interface des méthodes
+* Fichier link.h contenant les constantes et imports de bibliothèques
 * Fichier README.md qui décrit le contenu du projet
-* Fichier Makefile supportant les appels make 
+* Fichier Makefile supportant les appels make et make clean 
 
 
 ## Références
@@ -60,4 +62,6 @@ Pas de références.
 
 ## Statut
 
-WIP 
+Méthodes creation_repertoire et suppression_repertoire implémentées .
+
+WIP pour le reste . 
