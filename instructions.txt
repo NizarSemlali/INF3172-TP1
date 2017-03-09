@@ -1,5 +1,5 @@
-creation_repertoire /Users/home/Desktop/TP1
-suppression_repertoire /users/jacques
-creation_fichier /Users/home/Desktop/test.txt Bonjour ceci est le texte du fichier
-suppression_repertoire /Users/home/Desktop/tp2
-lire_fichier /users/blabla/test.txt
+creation_repertoire /etc
+creation_repertoire /etc/abc
+suppression_repertoire /etc
+creation_repertoire /test
+suppression_repertoire /test
