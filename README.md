@@ -62,6 +62,5 @@ Pas de références.
 
 ## Statut
 
-Méthodes creation_repertoire et suppression_repertoire implémentées .
-
-WIP pour le reste . 
+Toutes les méthodes sont implémentées . 
+  WIP pour la persistence du disque . 

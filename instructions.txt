@@ -1,5 +1,7 @@
-creation_repertoire /etc
-creation_repertoire /etc/abc
-suppression_repertoire /etc
-creation_repertoire /test
-suppression_repertoire /test
+creation_fichier /test1.test test 1 rootndndisaondiosandiosandoisandiosandiosandioasndioasndiosandioasnfiosanfiosanofisnaiofnsaiofasniofnasiofnasiofansiofasnoifasnfioasnfioafnasiofnasiofansiofasnoifasnfioasnfioafnasiofnasiofansiofasnoifasnfioasnfioafnasiofnasiofansiofasnoifasnfioasnfioasksksks
+creation_fichier /test2.test test 2 root
+creation_fichier /test3.test Affichage test 3 
+lire_fichier /test3.test
+lire_fichier /test1122.test
+suppression_fichier /testnqinsi.test
+suppression_repertoire /etc/abc/efs

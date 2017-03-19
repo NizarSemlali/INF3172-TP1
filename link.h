@@ -21,6 +21,8 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <errno.h>
+#include <math.h>
+#define NOMBRE_BLOCKS 32000
 #define MKDIR "creation_repertoire"
 #define RMDIR "suppression_repertoire"
 #define MKFILE "creation_fichier"
