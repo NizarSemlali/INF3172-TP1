@@ -63,4 +63,10 @@ Pas de références.
 ## Statut
 
 Toutes les méthodes sont implémentées . 
-  WIP pour la persistence du disque . 
+Cependant, l'aspect persistence du disque n'a pas été implémenté, faute de temps. 
+Le makefile supprime automatiquement le fichier "disque.bin" à la fin du programme, et le disque est recréé à chaque démarrage du programme . 
+  
+## Instructions
+  
+Toujours effectuer un make clean, avant de faire un make, et lancer le programme avec le nom du fichier d'instructions . 
+  EX : ./tp1 instructions.txt

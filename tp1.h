@@ -20,8 +20,8 @@
 /*
  * Fichier servant de disque pour l'écriture et la lecture des données
 */ 
- 
- FILE * disque ;
+  
+  FILE * disque ;
 
 
 
@@ -273,10 +273,3 @@ fichier trouver_fichier(repertoire *rep_parent, char *nom_fichier);
  *
 */ 
 int blocks_necessaires(char* contenu) ; 
-
-/* A SUPPRIMER 
- *
- * POUR LES TESTS
- *
- */
-void afficherBlocksNonLibres( disk* structDisque );

@@ -17,4 +17,4 @@ $(EXEC): $(OBJECTS)
 .PHONY: clean
 
 clean:
-	rm -f $(EXEC) $(OBJECTS)
+	rm -f $(EXEC) $(OBJECTS) *.bin

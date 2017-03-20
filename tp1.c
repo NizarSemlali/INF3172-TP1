@@ -34,30 +34,7 @@ int main ( int argc, char *argv[]) {
     disk* structDisque = (disk*) malloc(sizeof(disk));
     structDisque->listeRepertoires = (repertoire*) malloc(NOMBRE_BLOCKS * sizeof(repertoire));
 
-/*
-    if( disque != NULL ){
-
-        int tailleDisque = structDisque->nbRepertoires;
-        if( tailleDisque > 0 ){
-            repertoire* root =  (repertoire*) malloc(sizeof(repertoire));
-            strcpy(root->nom, "racine");
-            strcpy(root->parent, "");
-            root->nbr_fichiers = 0;
-            tailleDisque--;
-        }
-        if( tailleDisque > 0 ){
-            for (int i = 1; i < tailleDisque; i++)
-            {
-                structDisque->listeRepertoires[i].nom;
-                structDisque->listeRepertoires[structDisque->nbRepertoires] = *dir;
-                structDisque->nbRepertoires++ ;
-            }
-        }
-
-
-        
-
-    }else */if(disque == NULL) {
+    if(disque == NULL) {
 
         disque = fopen("disque.bin", "ab+");
 
@@ -151,7 +128,7 @@ int main ( int argc, char *argv[]) {
 
                     suppression_complete_dir(chemin, structDisque);
                     
-                } else if (strcmp(commande,MKFILE) == 0) {			
+                } else if (strcmp(commande,MKFILE) == 0) {          
 
                     int tailleContenu = 0 ;
                     bool flag = false ; 
@@ -160,30 +137,37 @@ int main ( int argc, char *argv[]) {
                   
                     token = strtok(NULL, " "); 
 
-                    while( token != NULL && !flag){
-
-                        tailleContenu += strlen(token) + 1 ; // +1 pour l'espace
-                        
-                        if (tailleContenu > 256) {
-                            fprintf(stderr, "La taille du contenu du fichier est trop longue !\n");
-                            flag = true ; 
-                        }
-
-                        strcat(contenuTemp,token);        // Récupération du contenu
-                        strcat(contenuTemp," ");
-                        token = strtok(NULL, " ");
-                        
-                    }
-                      
-                    if(!flag)
+                    if ( token == NULL ) 
                     {
-                        strncpy(contenu, contenuTemp, tailleContenu-1); // Suppression de l'espace à la fin  
+                        fprintf(stderr, "Le fichier que vous essayez de créer ne doit pas être vide !\n");
+                    } else  {
 
-                        int taille = taille_chemin(chemin);                   
-                        creation_fichier(chemin,contenu,taille, structDisque);
+                        while( token != NULL && !flag){
 
-                        free(contenu);
-                        free(contenuTemp);
+                            tailleContenu += strlen(token) + 1 ; // +1 pour l'espace
+                        
+                            if (tailleContenu > 256) {
+                                fprintf(stderr, "La taille du contenu du fichier est trop longue !\n");
+                                flag = true ; 
+                            }
+
+                            strcat(contenuTemp,token);        // Récupération du contenu
+                            strcat(contenuTemp," ");
+                            token = strtok(NULL, " ");
+                        
+                        }
+                    
+                      
+                        if(!flag)
+                        {
+                            strncpy(contenu, contenuTemp, tailleContenu-1); // Suppression de l'espace à la fin  
+
+                            int taille = taille_chemin(chemin);                   
+                            creation_fichier(chemin,contenu,taille, structDisque);
+
+                            free(contenu);
+                            free(contenuTemp);
+                        }
                     }
                     
                     
@@ -209,24 +193,10 @@ int main ( int argc, char *argv[]) {
         }
     }
 
-    
-    FILE* fichierTest = NULL;
-
-    fichierTest = fopen("listeRepertoires.txt", "w+");
-
-    int i ;
-    for ( i = 0 ; i < 32000 ; i++){
-
-        fprintf(fichierTest, "Nom : %s Nombre : %d\n", structDisque->listeRepertoires[i].nom, structDisque->listeRepertoires[i].nbr_fichiers );
-
-    }
-
       free(structDisque);
       free(structDisque->listeRepertoires);
       free(structDisque->blocks);
 
-
-      fclose(fichierTest);
       fclose(disque);
       fclose(instructions);
 
@@ -478,11 +448,7 @@ void creation_fichier(char* chemin, char* contenu, int taille, disk* structDisqu
     int blocks_remplis = 0 ; 
 
     // Gestion des erreurs de fichier :    
-    if ( strlen(contenu) == 0 ) 
-    {
-        fprintf(stderr, "Le fichier que vous essayez de créer ne doit pas être vide !\n");
-
-    } else if (trouver_repertoire(obtenir_parent(chemin, structDisque), structDisque) == NULL
+    if (trouver_repertoire(obtenir_parent(chemin, structDisque), structDisque) == NULL
                && taille != 1)
     {
         fprintf(stderr, "Erreur ! Le répertoire où vous essayez de créer le fichier n'existe pas !\n");
@@ -972,4 +938,3 @@ int blocks_necessaires(char* contenu)
 
     return blocks_necessaires ; 
 }
-
